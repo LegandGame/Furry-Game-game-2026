@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b4gmikapw55ny"]
+
+[ext_resource type="PackedScene" uid="uid://c8fk3rkitscfn" path="res://entities/player/player.tscn" id="1_mtvo1"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_f674s"]
+[ext_resource type="Script" uid="uid://cm0gefgetfgu6" path="res://entities/radio_system/radio_listener.gd" id="3_dorth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky4ls"]
+size = Vector2(54, 60)
+
+[node name="GameLevel" type="Node2D" unique_id=245836614]
+
+[node name="Player" parent="." unique_id=187169870 instance=ExtResource("1_mtvo1")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1041646473]
+z_index = -1
+position = Vector2(333, 184)
+scale = Vector2(11.40625, 6.75)
+texture = ExtResource("2_f674s")
+
+[node name="Radio" type="Area2D" parent="." unique_id=1221420530]
+position = Vector2(668, 29)
+script = ExtResource("3_dorth")
+metadata/_custom_type_script = "uid://cm0gefgetfgu6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radio" unique_id=398461719]
+shape = SubResource("RectangleShape2D_ky4ls")
+
+[node name="Sprite2D" type="Sprite2D" parent="Radio" unique_id=1505807469]
+modulate = Color(0, 0.55816776, 0.23017788, 1)
+texture = ExtResource("2_f674s")

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c8fk3rkitscfn"]
+
+[ext_resource type="Script" uid="uid://28v1d8ebj3w2" path="res://entities/player/player.gd" id="1_abrql"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="1_symyc"]
+[ext_resource type="Script" uid="uid://cc28k3ec5loeg" path="res://entities/radio_system/radio.gd" id="3_sglur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
+radius = 23.021729
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mr007"]
+radius = 33.01515
+
+[node name="Player" type="CharacterBody2D" unique_id=187169870 groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_abrql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1935256403]
+shape = SubResource("CircleShape2D_ky4ls")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=214444272]
+texture = ExtResource("1_symyc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1067226693]
+
+[node name="Radio" type="Area2D" parent="." unique_id=2042942246]
+script = ExtResource("3_sglur")
+metadata/_custom_type_script = "uid://cc28k3ec5loeg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radio" unique_id=1334454438]
+shape = SubResource("CircleShape2D_mr007")
