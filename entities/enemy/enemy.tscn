@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b364vopqbwh0h"]
+
+[ext_resource type="Script" uid="uid://cuthpa0jxbkx5" path="res://entities/enemy/enemy.gd" id="1_ksmh7"]
+[ext_resource type="Script" uid="uid://cm0gefgetfgu6" path="res://entities/radio_system/radio_listener.gd" id="2_im2q6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mr007"]
+radius = 58.137768
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qvso"]
+radius = 93.0215
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1071106948]
+script = ExtResource("1_ksmh7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152237612]
+shape = SubResource("CircleShape2D_ky4ls")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=769938818]
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=151990582]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" unique_id=1139988319]
+shape = SubResource("CircleShape2D_mr007")
+
+[node name="RadioListener" type="Area2D" parent="." unique_id=1203731457]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_im2q6")
+metadata/_custom_type_script = "uid://cm0gefgetfgu6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioListener" unique_id=527750134]
+shape = SubResource("CircleShape2D_7qvso")

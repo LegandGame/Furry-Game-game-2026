@@ -19,6 +19,8 @@ texture = ExtResource("2_f674s")
 
 [node name="Radio" type="Area2D" parent="." unique_id=1221420530]
 position = Vector2(668, 29)
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("3_dorth")
 metadata/_custom_type_script = "uid://cm0gefgetfgu6"
 
