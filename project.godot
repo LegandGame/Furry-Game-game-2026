@@ -46,7 +46,8 @@ folder_colors={
 "res://scenes/": "gray",
 "res://scenes/game_scene/": "purple",
 "res://scenes/game_scene/levels/": "purple",
-"res://scripts/": "gray"
+"res://scripts/": "gray",
+"res://ui/": "orange"
 }
 
 [gui]

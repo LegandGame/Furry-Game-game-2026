@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cgt26rhs1oscv"]
+
+[ext_resource type="PackedScene" uid="uid://d3lq2hsyxj356" path="res://ui/hud/radio/radio_display.tscn" id="1_xmswo"]
+
+[node name="HUD" type="CanvasLayer" unique_id=2107491078]
+
+[node name="Control" type="Control" parent="." unique_id=1873610855]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=502737282]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=2014121303]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=2062240328]
+layout_mode = 2
+alignment = 2
+
+[node name="RadioDisplay" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2025019341 instance=ExtResource("1_xmswo")]
+layout_mode = 2

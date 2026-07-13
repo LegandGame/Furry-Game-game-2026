@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d3lq2hsyxj356"]
+
+[ext_resource type="Texture2D" uid="uid://xjotrh667hb5" path="res://ui/hud/radio/Radio_sprite.png" id="1_jyogp"]
+
+[node name="RadioDisplay" type="Control" unique_id=2025019341]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=783888244]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jyogp")
