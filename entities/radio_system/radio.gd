@@ -16,4 +16,3 @@ func _process(delta: float) -> void:
 	var tune = Input.get_axis(tune_down_input, tune_up_input)
 	if tune:
 		frequency += tune * tuning_speed * delta
-		print(frequency)
