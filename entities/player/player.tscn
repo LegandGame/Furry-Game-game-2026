@@ -107,13 +107,14 @@ radius = 33.01515
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_abrql")
+top_speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1935256403]
 shape = SubResource("CircleShape2D_ky4ls")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=405978996]
 sprite_frames = SubResource("SpriteFrames_ky4ls")
-animation = &"Walk_Up"
+animation = &"Walk_LR"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1067226693]

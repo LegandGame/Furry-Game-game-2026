@@ -3,9 +3,39 @@
 [ext_resource type="PackedScene" uid="uid://c8fk3rkitscfn" path="res://entities/player/player.tscn" id="1_mtvo1"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_f674s"]
 [ext_resource type="Script" uid="uid://cm0gefgetfgu6" path="res://entities/radio_system/radio_listener.gd" id="3_dorth"]
+[ext_resource type="Texture2D" uid="uid://72p3pesgcdhy" path="res://scenes/game_scene/levels/labtileset.png" id="4_1rict"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ky4ls"]
 size = Vector2(54, 60)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2sydp"]
+texture = ExtResource("4_1rict")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ky4ls"]
+sources/0 = SubResource("TileSetAtlasSource_2sydp")
 
 [node name="GameLevel" type="Node2D" unique_id=245836614]
 
@@ -30,3 +60,6 @@ shape = SubResource("RectangleShape2D_ky4ls")
 [node name="Sprite2D" type="Sprite2D" parent="RadioListener" unique_id=1505807469]
 modulate = Color(0, 0.55816776, 0.23017788, 1)
 texture = ExtResource("2_f674s")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1303055052]
+tile_set = SubResource("TileSet_ky4ls")
