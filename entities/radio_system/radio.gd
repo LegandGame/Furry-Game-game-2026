@@ -4,7 +4,7 @@ signal frequency_changed(new_frequency)
 
 @export var frequency_min : float = 88.0
 @export var frequency_max : float = 108.0
-var frequency : float = 90.0 :
+var frequency : float = 88.0 :
 	set(value):
 		frequency = clampf(value, frequency_min, frequency_max)
 		frequency_changed.emit(frequency)

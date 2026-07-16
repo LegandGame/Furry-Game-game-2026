@@ -7,11 +7,16 @@ extends Control
 @onready var arrow: TextureRect = $PanelContainer/MarginContainer/Arrow
 @onready var dial: TextureRect = $PanelContainer/MarginContainer/Dial
 @export var dial_turn_speed : float = 10.0
+# min arrow offset = 25, max = 261
 
-@onready var radio_ref = get_tree().get_first_node_in_group("radio")
+var radio_ref : Radio
 
 func _process(delta: float) -> void:
+	if not is_instance_valid(radio_ref):
+		radio_ref = get_tree().get_first_node_in_group("radio")
+		return
 	var tune = Input.get_axis(tune_down_input, tune_up_input)
 	if tune:
 		dial.offset_transform_rotation += dial_turn_speed * tune * delta
 		# TODO Move Arrow along radio display (need to fix size first for most accuracy
+		arrow.offset_transform_position.x = ((radio_ref.frequency -88) * 11.8) + 25

@@ -37,19 +37,21 @@ layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 208
+theme_override_constants/margin_bottom = 210
 
 [node name="Arrow" type="TextureRect" parent="PanelContainer/MarginContainer" unique_id=1075061735]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 offset_transform_enabled = true
-offset_transform_position = Vector2(260, 0)
+offset_transform_position = Vector2(24, 0)
 texture = ExtResource("2_xh8v8")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Dial" type="TextureRect" parent="PanelContainer/MarginContainer" unique_id=1544285315]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 0
 offset_transform_enabled = true
 texture = ExtResource("3_xh8v8")
+expand_mode = 1
+stretch_mode = 4

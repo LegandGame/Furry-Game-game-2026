@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b364vopqbwh0h"]
 
 [ext_resource type="Script" uid="uid://cuthpa0jxbkx5" path="res://entities/enemy/enemy.gd" id="1_ksmh7"]
+[ext_resource type="Texture2D" uid="uid://dwd6pr0cuc2s2" path="res://entities/enemy/monster.png" id="2_3fvr7"]
 [ext_resource type="Script" uid="uid://cm0gefgetfgu6" path="res://entities/radio_system/radio_listener.gd" id="2_im2q6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
@@ -18,6 +19,7 @@ script = ExtResource("1_ksmh7")
 shape = SubResource("CircleShape2D_ky4ls")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=769938818]
+texture = ExtResource("2_3fvr7")
 
 [node name="VisionArea" type="Area2D" parent="." unique_id=151990582]
 collision_layer = 0
