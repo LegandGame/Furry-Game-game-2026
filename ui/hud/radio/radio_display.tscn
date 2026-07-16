@@ -3,10 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://xjotrh667hb5" path="res://ui/hud/radio/Radio_sprite.png" id="1_jyogp"]
 [ext_resource type="Script" uid="uid://bwg6xx6klurqq" path="res://ui/hud/radio/radio_display.gd" id="1_ypokr"]
 [ext_resource type="Texture2D" uid="uid://bmncy0ewg1gvi" path="res://ui/hud/radio/Arrow.png" id="2_xh8v8"]
-[ext_resource type="Texture2D" uid="uid://cn2e7jfbveam5" path="res://ui/hud/radio/knob_sprite_crop.png" id="3_xh8v8"]
+[ext_resource type="Texture2D" uid="uid://c758dmv6laerx" path="res://ui/hud/radio/knob_sprite.png" id="4_ypokr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ky4ls"]
 texture = ExtResource("1_jyogp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bls4j"]
+atlas = ExtResource("4_ypokr")
+region = Rect2(707, 199, 138, 133)
+filter_clip = true
 
 [node name="RadioDisplay" type="Control" unique_id=2025019341]
 layout_mode = 3
@@ -52,6 +57,6 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 offset_transform_enabled = true
-texture = ExtResource("3_xh8v8")
+texture = SubResource("AtlasTexture_bls4j")
 expand_mode = 1
 stretch_mode = 4
