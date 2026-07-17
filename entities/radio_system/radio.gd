@@ -12,7 +12,16 @@ var frequency : float = 88.0 :
 @export_custom(PROPERTY_HINT_INPUT_NAME, "") var tune_up_input : String = "tune_radio_up"
 @export_custom(PROPERTY_HINT_INPUT_NAME, "") var tune_down_input : String = "tune_radio_down"
 
+@export var audio_player : AudioStreamPlayer
+
+func _ready() -> void:
+	audio_player.volume_db = AppSettings.get_bus_volume(3) - 10.0
+
 func _process(delta: float) -> void:
 	var tune = Input.get_axis(tune_down_input, tune_up_input)
 	if tune:
 		frequency += tune * tuning_speed * delta
+		if not audio_player.playing:
+			audio_player.play()
+	else:
+		audio_player.stop()

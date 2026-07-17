@@ -16,8 +16,6 @@ func _process(delta: float) -> void:
 		check_time_timer -= delta
 		if check_time_timer <= 0.0:
 			aligned.emit()
-			print("CORRECT!")
-			# become disabled (WIP)
 			_on_radio_exited(radio_ref)
 	else:
 		check_time_timer = move_toward(check_time_timer, check_time, delta)

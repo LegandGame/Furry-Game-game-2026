@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://c8fk3rkitscfn"]
 
 [ext_resource type="Script" uid="uid://28v1d8ebj3w2" path="res://entities/player/player.gd" id="1_abrql"]
-[ext_resource type="Texture2D" uid="uid://st00lkaichn7" path="res://entities/player/catguy.png" id="2_sglur"]
+[ext_resource type="AudioStream" uid="uid://d4ekj6yt4unes" path="res://entities/player/assets/footstep.wav" id="2_26q78"]
+[ext_resource type="Texture2D" uid="uid://st00lkaichn7" path="res://entities/player/assets/catguy.png" id="2_sglur"]
+[ext_resource type="AudioStream" uid="uid://bnr5r2bkj6x5y" path="res://entities/player/assets/footstep1.wav" id="3_bectd"]
 [ext_resource type="Script" uid="uid://cc28k3ec5loeg" path="res://entities/radio_system/radio.gd" id="3_sglur"]
+[ext_resource type="AudioStream" uid="uid://mpcue7o57w72" path="res://entities/radio_system/audio/radio_static.ogg" id="4_bls4j"]
+[ext_resource type="AudioStream" uid="uid://qmbekg6n3wsv" path="res://entities/player/assets/footstep2.wav" id="4_wvtmh"]
+[ext_resource type="AudioStream" uid="uid://bu5bfnnt1kqu2" path="res://entities/player/assets/footstep3.wav" id="5_7thud"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
-radius = 23.021729
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ky4ls"]
+random_pitch = 1.0472941
+random_volume_offset_db = 0.6
+streams_count = 4
+stream_0/stream = ExtResource("2_26q78")
+stream_1/stream = ExtResource("3_bectd")
+stream_2/stream = ExtResource("4_wvtmh")
+stream_3/stream = ExtResource("5_7thud")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4y2n"]
+radius = 7.0
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bls4j"]
 atlas = ExtResource("2_sglur")
@@ -109,8 +124,11 @@ motion_mode = 1
 script = ExtResource("1_abrql")
 top_speed = 200.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=769167846]
+stream = SubResource("AudioStreamRandomizer_ky4ls")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1935256403]
-shape = SubResource("CircleShape2D_ky4ls")
+shape = SubResource("CapsuleShape2D_n4y2n")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=405978996]
 sprite_frames = SubResource("SpriteFrames_ky4ls")
@@ -119,11 +137,16 @@ autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1067226693]
 
-[node name="Radio" type="Area2D" parent="." unique_id=2042942246 groups=["radio"]]
+[node name="Radio" type="Area2D" parent="." unique_id=2042942246 node_paths=PackedStringArray("audio_player") groups=["radio"]]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("3_sglur")
+audio_player = NodePath("AudioStreamPlayer")
 metadata/_custom_type_script = "uid://cc28k3ec5loeg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Radio" unique_id=1334454438]
 shape = SubResource("CircleShape2D_mr007")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Radio" unique_id=1642522200]
+stream = ExtResource("4_bls4j")
+bus = &"SFX"

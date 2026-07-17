@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mfkf8n6f270y"
+path="res://.godot/imported/morse_open door.ogg-0c55f09c405dc92bb3f492198d368744.oggvorbisstr"
+
+[deps]
+
+source_file="res://entities/radio_system/audio/morse_open door.ogg"
+dest_files=["res://.godot/imported/morse_open door.ogg-0c55f09c405dc92bb3f492198d368744.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
