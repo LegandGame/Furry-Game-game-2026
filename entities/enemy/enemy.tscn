@@ -1,19 +1,28 @@
 [gd_scene format=3 uid="uid://b364vopqbwh0h"]
 
 [ext_resource type="Script" uid="uid://cuthpa0jxbkx5" path="res://entities/enemy/enemy.gd" id="1_ksmh7"]
-[ext_resource type="Texture2D" uid="uid://dwd6pr0cuc2s2" path="res://entities/enemy/monster.png" id="2_3fvr7"]
+[ext_resource type="Texture2D" uid="uid://dwd6pr0cuc2s2" path="res://entities/enemy/assets/monster.png" id="2_3fvr7"]
+[ext_resource type="AudioStream" uid="uid://cg0v5j2kusdu3" path="res://entities/enemy/assets/monster_ambient.ogg" id="2_4wwj3"]
 [ext_resource type="Script" uid="uid://cm0gefgetfgu6" path="res://entities/radio_system/radio_listener.gd" id="2_im2q6"]
+[ext_resource type="AudioStream" uid="uid://b3wq7j26l6ugw" path="res://entities/airlock/morse_activate.ogg" id="4_dt443"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky4ls"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mr007"]
-radius = 58.137768
+radius = 84.00595
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qvso"]
 radius = 93.0215
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1071106948]
 script = ExtResource("1_ksmh7")
+wander_speed = 50.0
+chase_speed = 200.0
+
+[node name="MusMonsterAmbience" type="AudioStreamPlayer2D" parent="." unique_id=104776884]
+stream = ExtResource("2_4wwj3")
+volume_db = -16.0
+bus = &"Music"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152237612]
 shape = SubResource("CircleShape2D_ky4ls")
@@ -28,11 +37,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" unique_id=1139988319]
 shape = SubResource("CircleShape2D_mr007")
 
-[node name="RadioListener" type="Area2D" parent="." unique_id=1203731457]
+[node name="RadioListener" type="Area2D" parent="." unique_id=1203731457 node_paths=PackedStringArray("sfx_working")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("2_im2q6")
+sfx_working = NodePath("SFXWorking")
 metadata/_custom_type_script = "uid://cm0gefgetfgu6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioListener" unique_id=527750134]
 shape = SubResource("CircleShape2D_7qvso")
+
+[node name="SFXWorking" type="AudioStreamPlayer2D" parent="RadioListener" unique_id=1571779431]
+stream = ExtResource("4_dt443")
+bus = &"SFX"

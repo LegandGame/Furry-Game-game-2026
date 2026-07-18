@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://d3dthg5oxq1fx"]
 
 [ext_resource type="Texture2D" uid="uid://b6askijbdxgal" path="res://entities/airlock/airlock.png" id="1_cgq4n"]
+[ext_resource type="Script" uid="uid://dk6ws8xl16wv8" path="res://entities/airlock/airlock_door.gd" id="1_ecy3v"]
 [ext_resource type="Script" uid="uid://cm0gefgetfgu6" path="res://entities/radio_system/radio_listener.gd" id="1_v4gcj"]
+[ext_resource type="AudioStream" uid="uid://d1fko27rbhk7q" path="res://entities/airlock/airlock_open.wav" id="2_1ydl5"]
+[ext_resource type="AudioStream" uid="uid://mfkf8n6f270y" path="res://entities/radio_system/audio/morse_open door.ogg" id="4_dhmic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ky4ls"]
 size = Vector2(32, 32)
@@ -75,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wyyjg")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Opening",
 "speed": 5.0
 }]
@@ -85,23 +88,30 @@ radius = 42.0119
 
 [node name="AirlockDoor" type="StaticBody2D" unique_id=636843310]
 collision_mask = 0
+script = ExtResource("1_ecy3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=86978217]
 shape = SubResource("RectangleShape2D_ky4ls")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1991645520]
-sprite_frames = SubResource("SpriteFrames_mr007")
-animation = &"Closed"
-autoplay = "Closed"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2130898728]
+[node name="SfxOpenDoor" type="AudioStreamPlayer2D" parent="." unique_id=1111754872]
+stream = ExtResource("2_1ydl5")
 bus = &"SFX"
 
-[node name="RadioListener" type="Area2D" parent="." unique_id=1541178094]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1991645520]
+sprite_frames = SubResource("SpriteFrames_mr007")
+animation = &"Opening"
+autoplay = "Closed"
+
+[node name="RadioListener" type="Area2D" parent="." unique_id=1541178094 node_paths=PackedStringArray("sfx_working")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_v4gcj")
+sfx_working = NodePath("sfxWorking")
 metadata/_custom_type_script = "uid://cm0gefgetfgu6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioListener" unique_id=1195761011]
 shape = SubResource("CircleShape2D_ky4ls")
+
+[node name="sfxWorking" type="AudioStreamPlayer2D" parent="RadioListener" unique_id=2130898728]
+stream = ExtResource("4_dhmic")
+bus = &"SFX"

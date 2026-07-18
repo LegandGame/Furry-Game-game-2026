@@ -2,6 +2,8 @@ class_name Chaser extends CharacterBody2D
 
 @onready var vision_area: Area2D = $VisionArea
 @onready var radio_listener: RadioListener = $RadioListener
+@onready var mus_monster_ambience: AudioStreamPlayer2D = $MusMonsterAmbience
+
 
 @export var wander_speed : float = 150.0
 @export var chase_speed : float = 400.0
@@ -20,11 +22,12 @@ var health := 3
 
 func _ready() -> void:
 	vision_area.body_entered.connect(_on_body_entered)
-	vision_area.body_entered.connect(_on_body_exited)
+	vision_area.body_exited.connect(_on_body_exited)
 	radio_listener.monitoring = false
 	radio_listener.aligned.connect(take_damage)
 
 func _physics_process(delta: float) -> void:
+	#print(cur_state)
 	match cur_state:
 		STATE.WANDER:
 			_wander_process(delta)
@@ -50,9 +53,10 @@ func _wander_process(delta : float) -> void:
 		wander_location = Vector2.INF
 
 func _investigate_process(delta : float) -> void:
-	if player_ref:
+	if is_instance_valid(player_ref):
 		velocity = self.global_position.direction_to(player_ref.global_position) * wander_speed
 		chase_timer -= delta * self.global_position.distance_to(player_ref.global_position)
+		print(chase_timer)
 		if chase_timer <= 0.0:
 			cur_state = STATE.CHASE
 	else:
@@ -65,6 +69,8 @@ func _chase_process(_delta: float) -> void:
 		radio_listener.set_deferred("monitoring", true)
 	velocity = self.global_position.direction_to(player_ref.global_position) * chase_speed
 	# TODO figure out how to damage player
+	if not mus_monster_ambience.playing:
+		mus_monster_ambience.play()
 
 func _stun_process(delta: float) -> void:
 	stun_timer -= delta
@@ -97,6 +103,7 @@ func take_damage() -> void:
 	health -= 1
 	if health <= 0:
 		stun_timer = 10.0
+		mus_monster_ambience.stop()
 	else:
 		stun_timer = 0.5
 	radio_listener.set_deferred("monitoring", false)

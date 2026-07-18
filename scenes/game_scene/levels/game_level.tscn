@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_f674s"]
 [ext_resource type="Texture2D" uid="uid://72p3pesgcdhy" path="res://scenes/game_scene/levels/labtileset.png" id="4_1rict"]
 [ext_resource type="PackedScene" uid="uid://d3dthg5oxq1fx" path="res://entities/airlock/airlock_door.tscn" id="4_2sydp"]
+[ext_resource type="PackedScene" uid="uid://b364vopqbwh0h" path="res://entities/enemy/enemy.tscn" id="5_2sydp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2sydp"]
 texture = ExtResource("4_1rict")
@@ -31,14 +32,21 @@ texture = ExtResource("4_1rict")
 3:3/0 = 0
 4:3/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1rict"]
+resource_name = "Airlock"
+scenes/1/scene = ExtResource("4_2sydp")
+
 [sub_resource type="TileSet" id="TileSet_ky4ls"]
+tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2sydp")
+sources/1 = SubResource("TileSetScenesCollectionSource_1rict")
 
 [node name="GameLevel" type="Node2D" unique_id=245836614]
 
 [node name="Player" parent="." unique_id=187169870 instance=ExtResource("1_mtvo1")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1041646473]
+visible = false
 z_index = -1
 position = Vector2(333, 184)
 scale = Vector2(11.40625, 6.75)
@@ -49,3 +57,6 @@ tile_set = SubResource("TileSet_ky4ls")
 
 [node name="AirlockDoor" parent="." unique_id=636843310 instance=ExtResource("4_2sydp")]
 position = Vector2(-4, 199)
+
+[node name="Enemy" parent="." unique_id=1071106948 instance=ExtResource("5_2sydp")]
+position = Vector2(139, 5)
